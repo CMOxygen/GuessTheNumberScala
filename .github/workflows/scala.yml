@@ -26,9 +26,7 @@ jobs:
         java-version: '14'
         distribution: 'temurin'
         cache: 'sbt'
-    - name: setup-scala
-      #uses: olafurpg/setup-scala@v10
-      uses: openjdk@1.14
+        uses: openjdk@1.14
     - name: Set Project Dir
       run: cd GuessTheNumberScala 
     - name: Run tests
