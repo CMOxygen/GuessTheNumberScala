@@ -23,14 +23,7 @@ object ConsoleUI:
 
     while i < 2 do
       println("Input max value you want to guess")
-
-      try
-        i = StdIn.readInt()
-      catch
-        case ex: java.lang.NumberFormatException => println("Wrong input!")
-
-      if i < 1 then
-        println("Wrong input")
+      i = userInputInt()
     i
 
   def inputAnswer(min: Int, max: Int): Int =
@@ -38,13 +31,15 @@ object ConsoleUI:
 
     while s < min || s > max do
       println(s"Enter number between $min and $max")
-
-      try
-        s = StdIn.readInt()
-      catch
-        case ex: java.lang.NumberFormatException => println("Wrong input!")
+      s = userInputInt()
     s
 
   def printResult(value: Int, result: Boolean): Unit =
     println(s"${if result then "You won!" else "You lost!"}" + s"The right answer is $value")
 
+  private def userInputInt(): Int =
+    try
+      StdIn.readInt()
+    catch
+      case ex: java.lang.NumberFormatException => println("Wrong input!")
+        return 0
